@@ -1,6 +1,6 @@
 {
   "name": "@dedcinema/contracts",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Protobuf definition and generated TypeScript types",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -9,6 +9,7 @@
     "generate": "protoc -I ./proto ./proto/*.proto --plugin=protoc-gen-ts_proto=./node_modules/.bin/protoc-gen-ts_proto --ts_proto_out=./gen --ts_proto_opt=nestJs=true,package=omit"
   },
   "files": [
+    "dist",
     "proto",
     "gen"
   ],
