@@ -1,8 +1,11 @@
 {
   "name": "@dedcinema/contracts",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Protobuf definition and generated TypeScript types",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "scripts": {
+    "build": "tsc -p tsconfig.build.json",
     "generate": "protoc -I ./proto ./proto/*.proto --plugin=protoc-gen-ts_proto=./node_modules/.bin/protoc-gen-ts_proto --ts_proto_out=./gen --ts_proto_opt=nestJs=true,package=omit"
   },
   "files": [
@@ -16,5 +19,9 @@
     "@nestjs/microservices": "^11.1.17",
     "rxjs": "^7.8.2",
     "ts-proto": "^2.11.5"
+  },
+  "devDependencies": {
+    "@types/node": "^25.5.0",
+    "typescript": "^6.0.2"
   }
 }
