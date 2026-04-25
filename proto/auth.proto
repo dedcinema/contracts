@@ -10,7 +10,7 @@ service AuthService {
     rpc Refresh (RefreshRequest) returns (RefreshResponse);
 
     rpc TelegramInit (google.protobuf.Empty) returns (TelegramInitResponse);
-    rpc TelegramVerify (TelegramVerifyRequest) returns (TelegramInitResponse);
+    rpc TelegramVerify (TelegramVerifyRequest) returns (TelegramVerifyResponse);
     rpc TelegramComplete (TelegramCompleteRequest) returns (TelegramCompleteResponse);
     rpc TelegramConsume (TelegramConsumeRequest) returns (TelegramConsumeResponse);
 }
