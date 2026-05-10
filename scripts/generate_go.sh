@@ -4,6 +4,7 @@ set -e
 echo "Generating Go protobuf (media) ..."
 
 protoc -I ./proto \
+    --experimental_allow_proto3_optional \
     --go_out=./gen/go \
     --go-grpc_out=./gen/go \
     --go_opt=module=github.com/dedcinema/contracts \
