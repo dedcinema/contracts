@@ -1,6 +1,6 @@
 {
   "name": "@dedcinema/contracts",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "Protobuf definition and generated TypeScript types",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
