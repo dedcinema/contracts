@@ -10,9 +10,9 @@ service MovieService {
 }
 
 message ListMoviesRequest {
-    string category = 1;
-    bool random = 2;
-    int32 limit = 3;
+    optional string category = 1;
+    optional bool random = 2;
+    optional int32 limit = 3;
 }
 
 message ListMoviesResponse {
