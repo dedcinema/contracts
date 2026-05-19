@@ -31,5 +31,5 @@ message Seat {
     int32 price = 4;
     string status = 5;
     string type = 6;
-    string hall_id = 7;
+    string hall_id = 8;
 }
