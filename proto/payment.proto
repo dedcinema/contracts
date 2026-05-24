@@ -5,6 +5,7 @@ package payment.v1;
 service PaymentService {
     rpc CreatePayment (CreatePaymentRequest) returns (CreatePaymentResponse);
     rpc ProcessPaymentEvent (ProcessPaymentEventRequest) returns (ProcessPaymentEventResponse);
+    rpc HandleWebhook (HandleWebhookRequest) returns (HandleWebhookResponse);
 }
 
 message CreatePaymentRequest {
@@ -17,6 +18,7 @@ message CreatePaymentRequest {
 
 message CreatePaymentResponse {
     string url = 1;
+    string payment_id = 2;
 }
 
 message ProcessPaymentEventRequest {
@@ -31,6 +33,15 @@ message ProcessPaymentEventRequest {
 }
 
 message ProcessPaymentEventResponse {
+    bool ok = 1;
+}
+
+message HandleWebhookRequest {
+    string payload = 1;
+    string signature = 2;
+}
+
+message HandleWebhookResponse {
     bool ok = 1;
 }
 
