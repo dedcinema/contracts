@@ -13,6 +13,9 @@ service AuthService {
     rpc IssueVoiceOtp (IssueVoiceOtpRequest) returns (IssueVoiceOtpResponse);
     rpc VerifyVoiceOtp (VerifyVoiceOtpRequest) returns (VerifyVoiceOtpResponse);
 
+    rpc SaveFeedback (SaveFeedbackRequest) returns (SaveFeedbackResponse);
+    rpc ListFeedback (ListFeedbackRequest) returns (ListFeedbackResponse);
+
     rpc TelegramInit (google.protobuf.Empty) returns (TelegramInitResponse);
     rpc TelegramVerify (TelegramVerifyRequest) returns (TelegramVerifyResponse);
     rpc TelegramComplete (TelegramCompleteRequest) returns (TelegramCompleteResponse);
@@ -106,4 +109,35 @@ message VerifyVoiceOtpRequest {
 
 message VerifyVoiceOtpResponse {
     string access_token = 1;
+}
+
+message SaveFeedbackRequest {
+    string type = 1;
+    string text = 2;
+    string name = 3;
+    string phone = 4;
+}
+
+message SaveFeedbackResponse {
+    string id = 1;
+    string expires_at = 2;
+}
+
+message ListFeedbackRequest {
+    string type = 1;
+    int32 limit = 2;
+}
+
+message FeedbackItem {
+    string id = 1;
+    string type = 2;
+    string text = 3;
+    string name = 4;
+    string phone = 5;
+    string created_at = 6;
+    string expires_at = 7;
+}
+
+message ListFeedbackResponse {
+    repeated FeedbackItem items = 1;
 }
