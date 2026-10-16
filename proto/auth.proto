@@ -9,6 +9,10 @@ service AuthService {
     rpc VerifyOtp (VerifyOtpRequest) returns (VerifyOtpResponse);
     rpc Refresh (RefreshRequest) returns (RefreshResponse);
 
+    rpc FindContactByPhone (FindContactByPhoneRequest) returns (FindContactByPhoneResponse);
+    rpc IssueVoiceOtp (IssueVoiceOtpRequest) returns (IssueVoiceOtpResponse);
+    rpc VerifyVoiceOtp (VerifyVoiceOtpRequest) returns (VerifyVoiceOtpResponse);
+
     rpc TelegramInit (google.protobuf.Empty) returns (TelegramInitResponse);
     rpc TelegramVerify (TelegramVerifyRequest) returns (TelegramVerifyResponse);
     rpc TelegramComplete (TelegramCompleteRequest) returns (TelegramCompleteResponse);
@@ -76,4 +80,30 @@ message TelegramConsumeRequest {
 message TelegramConsumeResponse {
     string access_token = 1;
     string refresh_token = 2;
+}
+
+message FindContactByPhoneRequest {
+    string phone = 1;
+}
+
+message FindContactByPhoneResponse {
+    string account_id = 1;
+    string email = 2;
+}
+
+message IssueVoiceOtpRequest {
+    string account_id = 1;
+}
+
+message IssueVoiceOtpResponse {
+    string code = 1;
+}
+
+message VerifyVoiceOtpRequest {
+    string account_id = 1;
+    string code = 2;
+}
+
+message VerifyVoiceOtpResponse {
+    string access_token = 1;
 }
