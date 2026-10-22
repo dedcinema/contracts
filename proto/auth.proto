@@ -13,6 +13,9 @@ service AuthService {
     rpc IssueVoiceOtp (IssueVoiceOtpRequest) returns (IssueVoiceOtpResponse);
     rpc VerifyVoiceOtp (VerifyVoiceOtpRequest) returns (VerifyVoiceOtpResponse);
 
+    rpc CreateVoiceLink (CreateVoiceLinkRequest) returns (CreateVoiceLinkResponse);
+    rpc ConsumeVoiceLink (ConsumeVoiceLinkRequest) returns (ConsumeVoiceLinkResponse);
+
     rpc SaveFeedback (SaveFeedbackRequest) returns (SaveFeedbackResponse);
     rpc ListFeedback (ListFeedbackRequest) returns (ListFeedbackResponse);
 
@@ -140,4 +143,23 @@ message FeedbackItem {
 
 message ListFeedbackResponse {
     repeated FeedbackItem items = 1;
+}
+
+message CreateVoiceLinkRequest {
+    string account_id = 1;
+    string identity = 2;
+}
+
+message CreateVoiceLinkResponse {
+    int32 expires_in_seconds = 1;
+}
+
+message ConsumeVoiceLinkRequest {
+    string identity = 1;
+}
+
+message ConsumeVoiceLinkResponse {
+    bool linked = 1;
+    string access_token = 2;
+    string email = 3;
 }
