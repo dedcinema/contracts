@@ -6,6 +6,7 @@ service PaymentService {
     rpc CreatePayment (CreatePaymentRequest) returns (CreatePaymentResponse);
     rpc ProcessPaymentEvent (ProcessPaymentEventRequest) returns (ProcessPaymentEventResponse);
     rpc HandleWebhook (HandleWebhookRequest) returns (HandleWebhookResponse);
+    rpc GetPaymentLink (GetPaymentLinkRequest) returns (GetPaymentLinkResponse);
 }
 
 message CreatePaymentRequest {
@@ -48,4 +49,13 @@ message HandleWebhookResponse {
 message SeatInput {
     string seat_id = 1;
     int32 price = 2;
+}
+
+message GetPaymentLinkRequest {
+    string payment_id = 1;
+    string user_id = 2;
+}
+
+message GetPaymentLinkResponse {
+    string url = 1;
 }
