@@ -15,6 +15,7 @@ service AuthService {
 
     rpc CreateVoiceLink (CreateVoiceLinkRequest) returns (CreateVoiceLinkResponse);
     rpc ConsumeVoiceLink (ConsumeVoiceLinkRequest) returns (ConsumeVoiceLinkResponse);
+    rpc ResolveVoiceProfile (ResolveVoiceProfileRequest) returns (ResolveVoiceProfileResponse);
 
     rpc SaveFeedback (SaveFeedbackRequest) returns (SaveFeedbackResponse);
     rpc ListFeedback (ListFeedbackRequest) returns (ListFeedbackResponse);
@@ -162,4 +163,16 @@ message ConsumeVoiceLinkResponse {
     bool linked = 1;
     string access_token = 2;
     string email = 3;
+}
+
+// Read-only: finds the account behind a voice link (identity) or a phone
+// without consuming anything. Exactly one of identity / phone is set.
+message ResolveVoiceProfileRequest {
+    string identity = 1;
+    string phone = 2;
+}
+
+message ResolveVoiceProfileResponse {
+    bool found = 1;
+    string account_id = 2;
 }
